@@ -1,0 +1,19 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  mongodb:
+    image: 'bitnami/mongodb:4.0'
+    networks:
+      - app-tier
+    ports:
+      - "27018:27017"
+    volumes:
+      - './data:/bitnami'
+    environment:
+      - MONGODB_EXTRA_FLAGS=--wiredTigerCacheSizeGB=2
+      - MONGODB_ENABLE_DIRECTORY_PER_DB=yes
+      - MONGODB_ROOT_PASSWORD=Yangcong345
